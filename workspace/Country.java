@@ -4,12 +4,12 @@ public class Country
   private final String name;
   private final String capital;
   private final String lang;
-  private final File image;
+  private final String image;
   // add constructors
-  public Country(String name, String capital, String lang, File image){
+  public Country(String name, String capital, String lang, String image){
     this.name = name;
     this.capital = capital;
-    this.langauge = lang;
+    this.lang = lang;
     this.image = image;
 
   }
@@ -21,14 +21,14 @@ public class Country
     return capital;
   }
   public String getLang(){
-    return language;
+    return lang;
   }
-  public File getImage(){
+  public String getImage(){
     return image;
   }
   // Write a toString() method that returns a concatenated String of 3 of the instance variables in a sentence like "..'s capital is .. and its primary language is ..."
   public String toString(){
-    return name + "'s capital is " + capital + " and its primary language is " + language;
+    return name + "'s capital is " + capital + " and its primary language is " + lang;
   }
 
 

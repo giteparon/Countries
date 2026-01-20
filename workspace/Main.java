@@ -30,16 +30,21 @@ public class Main
   /* loadCountries() reads in the data from the countries-data.csv file and fills in the countryArray with data. You need to add the loop that reads in the country data into the array. */
   public void loadCountries() 
   {
-    // Open the data file. Please note that the file structure we're working with requires the full file path as shown here unlike what you saw in runestone where the file name was sufficient.
-    File file = new File("/workspaces/Countries/workspace/countries-data.csv");
-    Scanner scan = new Scanner(file);
-    boolean loop = true;
-    for(int i = 0; i < 10; i++){
-      String[] _temp = scan.nextLine().split(",");
-      Country _coun = new Country(_temp[0], _temp[1], _temp[2], _temp[3]);
-      countryArray[i] = _coun;
+    try{
+      // Open the data file. Please note that the file structure we're working with requires the full file path as shown here unlike what you saw in runestone where the file name was sufficient.
+      File file = new File("/workspaces/Countries/workspace/countries-data.csv");
+      Scanner scan = new Scanner(file);
+      boolean loop = true;
+      for(int i = 0; i < 10; i++){
+        String[] _temp = scan.nextLine().split(",");
+        Country _coun = new Country(_temp[0], _temp[1], _temp[2], _temp[3]);
+        countryArray[i] = _coun;
       
+      }  
+    }catch(IOException e){
+      System.out.println("file issue");
     }
+    
     
     //create a scanner and a loop to read from the file until you've read everything.
     // inside the loop you'll need to read in a line from the file and use "split" to break up the data into destinct parts.
@@ -72,13 +77,15 @@ public class Main
     else{
       index++;
     }
+    outputLabel.setText("");
+    showCountry();
   }
   
   /* reviewButton should get the country at index from the countryArray, call its toString() method and save the result, print it out with System.out.println and as an argument to outputLabel.setText( text to print out ); */
   public void reviewButtonClick()
   {
     Country _coun = countryArray[index];
-    _out = _coun.toString();
+    String _out = _coun.toString();
     System.out.println(_out);
     outputLabel.setText(_out);
 
@@ -89,11 +96,11 @@ public class Main
   public void quizButtonClick()
   {
     int qn = (int)(Math.random() * 3);
-    outputLabel.setText() = "";
+    outputLabel.setText("");
     Scanner scan = new Scanner(System.in);
     Country _coun = countryArray[index];
-    String ans;
-    switch qn:
+    String ans = "";
+    switch(qn){
       case 0:
         System.out.println("Whats the name of this country?");
         ans = _coun.getName();
@@ -106,7 +113,8 @@ public class Main
         System.out.println("What language do they speak in this country?");
         ans = _coun.getLang();
         break;
-    ansPlayer = scan.nextLine();
+    }
+    String ansPlayer = scan.nextLine();
     if(ans.equals(ansPlayer)){
       System.out.println("correct");
     }
