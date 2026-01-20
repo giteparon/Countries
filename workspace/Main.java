@@ -1,3 +1,6 @@
+//amir, 20.1.26, this controls the buttons of the geogame in order to study about countries, where are they and what languages do they speak and their capitals
+
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
